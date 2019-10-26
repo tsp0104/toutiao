@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    toutiao
+    <!-- 一级路由容器 -->
+    <router-view></router-view>
   </div>
 </template>
 
