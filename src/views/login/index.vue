@@ -6,11 +6,11 @@
       <!-- 背景图片 -->
       <img src="../../assets/logo_index.png" alt />
       <!-- 登陆模块 -->
-      <el-form :model="LoginForm">
-        <el-form-item>
+      <el-form :model="LoginForm" :rules="loginRules">
+        <el-form-item prop="mobile">
           <el-input v-model="LoginForm.mobile" placeholder="请输入手机号"></el-input>
         </el-form-item>
-        <el-form-item>
+        <el-form-item prop="code">
           <el-input v-model="LoginForm.code" placeholder="请输入验证码" style="width:240px;margin-right:8px"></el-input>
           <el-button>发送验证码</el-button>
         </el-form-item>
@@ -30,6 +30,15 @@ export default {
       LoginForm: {
         mobile: '',
         code: ''
+      },
+      loginRules: {
+        mobile: [
+          { required: true, message: '请输入手机号', trigger: 'blur' }
+        ],
+        code: [
+          { required: true, message: '请输入验证码', trigger: 'blur' },
+          { len: 6, message: '验证码是6位', trigger: 'blur' }
+        ]
       }
     }
   }
